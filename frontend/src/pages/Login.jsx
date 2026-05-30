@@ -123,15 +123,6 @@ export default function Login() {
             )}
           </button>
         </form>
-
-        <div style={S.hintBox}>
-          <span style={S.hintLabel}>Demo</span>
-          <span style={S.hintRow}>
-            <code style={S.code}>admin</code>
-            <span style={S.hintSep}>/</span>
-            <code style={S.code}>ChangeMe123!</code>
-          </span>
-        </div>
       </div>
 
       <div style={S.badge}>
@@ -259,30 +250,6 @@ const S = {
     marginTop: 4,
     transition: "background .15s",
     display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-  },
-
-  hintBox: {
-    marginTop: 22,
-    padding: "10px 14px",
-    background: "#f8fafc",
-    border: "1px dashed #cbd5e1",
-    borderRadius: 8,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    fontSize: 11,
-  },
-  hintLabel: { color: "#94a3b8", letterSpacing: "0.1em", fontWeight: 600, fontSize: 10 },
-  hintRow:   { display: "flex", alignItems: "center", gap: 6 },
-  hintSep:   { color: "#cbd5e1" },
-  code: {
-    background: "#ffffff",
-    border: "1px solid #e2e8f0",
-    borderRadius: 4,
-    padding: "2px 7px",
-    color: "#2563eb",
-    fontFamily: "JetBrains Mono, monospace",
-    fontSize: 11,
   },
 
   badge: {
