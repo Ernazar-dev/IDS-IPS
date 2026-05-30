@@ -21,11 +21,21 @@ async function createAdminUser() {
       newAdmin.setPassword(config.ADMIN_PASSWORD);
       await newAdmin.save();
       console.log("[DB] Admin paydalanıwshısı jaratıldı:", config.ADMIN_USERNAME);
-    } else if (!admin.password.startsWith("$2")) {
-      // Python Werkzeug hash anıqlandı → bcrypt ke ótiw
-      admin.setPassword(config.ADMIN_PASSWORD);
-      await admin.save();
-      console.log("[DB] Admin paroli bcrypt formatına ózgertildi");
+    } else {
+      let updated = false;
+      if (!admin.password.startsWith("$2")) {
+        admin.setPassword(config.ADMIN_PASSWORD);
+        updated = true;
+        console.log("[DB] Admin paroli bcrypt formatına ózgertildi");
+      } else if (!admin.checkPassword(config.ADMIN_PASSWORD)) {
+        admin.setPassword(config.ADMIN_PASSWORD);
+        updated = true;
+        console.log("[DB] Admin paroli ADMIN_PASSWORD muhit o'zgaruvchisi bilan sinxronlashtirildi");
+      }
+
+      if (updated) {
+        await admin.save();
+      }
     }
   } catch (err) {
     console.error("[DB] Admin jaratıwda qátelik:", err.message);
